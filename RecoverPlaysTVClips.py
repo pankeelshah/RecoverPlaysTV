@@ -6,9 +6,7 @@ import zipfile
 import glob
 import os
 
-def create_zip():
-    # input username
-    username = "AwesomeAri"
+def create_zip(username):
 
     # plays.tv profile link
     user_profile_page_url = "https://web.archive.org/web/20191210043532/https://plays.tv/u/"
