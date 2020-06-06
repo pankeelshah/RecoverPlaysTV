@@ -44,7 +44,6 @@ for link in links:
     except:
         print("not a video link")
 
-video_increment = 21
 # create zip file
 zipObj = zipfile.ZipFile('PlaysTVClips.zip', 'w')
  
