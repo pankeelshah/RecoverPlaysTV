@@ -6,9 +6,7 @@ import zipfile
 import glob
 import os
 
-
-def createZip():
-
+def create_zip():
     # input username
     username = "AwesomeAri"
 

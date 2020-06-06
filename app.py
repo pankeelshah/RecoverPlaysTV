@@ -24,14 +24,11 @@ def main():
 
 @app.route('/index')
 def index():
-
-
     return render_template("index.html")
-
 
 @app.route('/proxy/download')
 def proxydownload():
-    RecoverPlaysTVClips.createZip()
+    RecoverPlaysTVClips.create_zip()
     d = {}
     d[0] =  ["Hello lol"]
     return d
