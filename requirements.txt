@@ -33,7 +33,7 @@ google-resumable-media==0.5.0
 googleapis-common-protos==1.6.0
 grpcio==1.26.0
 gunicorn
-httplib2==0.15.0
+httplib2==0.18.0
 hyperlink==17.3.1
 idna==2.8
 importlib-metadata==1.5.0
