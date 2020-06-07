@@ -19,6 +19,7 @@ def index():
 @app.route('/proxy/download/<username>')
 def proxydownload(username):
     RecoverPlaysTVClips.create_zip(username)
+    print("completed zip")
     d = {}
     d[0] =  ["Hello lol"]
     return d

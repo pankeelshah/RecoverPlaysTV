@@ -47,10 +47,9 @@ def create_zip(username):
 
     # create zip file
     print("creating zip\n")
-    zipObj = zipfile.ZipFile('PlaysTVClips.zip', 'w')
+    zipObj = zipfile.ZipFile('static/PlaysTVClips.zip', 'w')
     
     # Add multiple files to the zip
-
     for i in range(1, video_increment):
         zipObj.write("clip" + str(i) + ".mp4")
 

@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
 {% block head %}
+<link rel="stylesheet" href="/static/index.css">
 <script src="/static/download.js"></script>
 {% endblock %}
 
 {% block content %}
-helloworld
-<button onclick="clicked()"></button>
+<div>
+    <input type="text" class="form-control" id="username" value="" autofocus="autofocus" placeholder="PlaysTV Username">
+</div>
+<input id="searchButton" type="submit" class="btn btn-info" onclick="clicked()" value="Search">
+<button type="submit" onclick="window.open('/static/PlaysTVClips.zip')">Download!</button>
 {% endblock %}
