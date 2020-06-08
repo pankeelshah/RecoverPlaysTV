@@ -1,4 +1,5 @@
 function clicked(){
+    document.getElementById("downloadBtn").disabled = true;
     console.log("Clicked the button");
     document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
     var username = document.querySelector("#username").value;
