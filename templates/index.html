@@ -6,9 +6,14 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <input type="text" class="form-control" id="username" value="" autofocus="autofocus" placeholder="PlaysTV Username">
+<div class="textInput">
+    <input type="text" id="username" class="form-control" placeholder="PlaysTV Username">
+    <br>
+    <input id="searchButton" type="submit" class="btn btn-info" onclick="clicked()" value="Search">
+    <button id="downloadBtn" type="submit" disabled="true" onclick="window.open('/static/PlaysTVClips.zip')">Download!</button>
+    <br>
+    <br>
+    <div id="showLoading"></div>
+    
 </div>
-<input id="searchButton" type="submit" class="btn btn-info" onclick="clicked()" value="Search">
-<button type="submit" onclick="window.open('/static/PlaysTVClips.zip')">Download!</button>
 {% endblock %}
