@@ -1,4 +1,3 @@
-  
 import requests
 import bs4
 import urllib
@@ -48,7 +47,7 @@ def create_zip(username):
             print("not a video link")
 
     # create zip file
-    zipObj = zipfile.ZipFile("static/PlaysTVClips.zip", "w")
+    zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
     
     # Add multiple files to the zip
     for i in range(0, video_increment):
