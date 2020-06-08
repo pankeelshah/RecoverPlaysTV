@@ -66,5 +66,3 @@ def create_zip(username):
             os.remove(video)
         except:
             print("can't find video to delete")
-
-create_zip("Awesomeari")
