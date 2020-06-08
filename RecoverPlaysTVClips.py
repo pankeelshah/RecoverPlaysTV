@@ -4,6 +4,7 @@ import urllib
 import zipfile
 import glob
 import os
+import app
 
 def create_zip(username):
 
@@ -40,6 +41,7 @@ def create_zip(username):
     # different video names, download videos
     video_increment = 0
     for link in links:
+        app.handle_message("testie")
         try:
             urllib.request.urlretrieve(link[0], link[1] + ".mp4")
             video_increment += 1
