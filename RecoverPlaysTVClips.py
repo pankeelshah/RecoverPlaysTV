@@ -38,7 +38,7 @@ def create_zip(username):
     # remove duplicate links
     links = list(set(links))
 
-    # different video names
+    # different video names, download videos
     video_increment = 0
     for link in links:
         try:
@@ -48,15 +48,23 @@ def create_zip(username):
             print("not a video link")
 
     # create zip file
-    zipObj = zipfile.ZipFile('static/' + username + '_PlaysTVClips.zip', 'w')
+    zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
     
     # Add multiple files to the zip
     for i in range(0, video_increment):
-        zipObj.write(links[i][1] + ".mp4")
+        try:
+            zipObj.write(links[i][1] + ".mp4")
+        except:
+            print("can't find video to add to zip")
 
     # close the Zip File
     zipObj.close()
 
     # remove video files
     for video in glob.glob("*.mp4"):
-        os.remove(video)
+        try:
+            os.remove(video)
+        except:
+            print("can't find video to delete")
+
+create_zip("Awesomeari")
