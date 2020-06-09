@@ -26,6 +26,13 @@ def proxydownload(username):
     d[0] =  ["Hello lol"]
     return d
 
+@app.route('/proxy/deletezip/<username>')
+def proxydeletezip(username):
+    RecoverPlaysTVClips.delete_zip(username)
+    d = {}
+    d[0] =  ["Hello lol"]
+    return d
+
 @socketio.on('message')
 def handle_message(message):
     print('received message: ' + message)

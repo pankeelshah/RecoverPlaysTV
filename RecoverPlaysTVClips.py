@@ -67,3 +67,8 @@ def create_zip(username):
             os.remove(video)
         except:
             print("can't find video to delete")
+
+def delete_zip(username):
+    myfile = "static/" + username + "_PlaysTVClips.zip"
+    if os.path.isfile(myfile):
+        os.remove(myfile)
