@@ -2,7 +2,7 @@ from flask import Flask, request, Response, render_template, redirect
 from flask_wtf.csrf import CSRFProtect
 from flask_wtf import FlaskForm
 import RecoverPlaysTVClips
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 
 csrf = CSRFProtect()
 app = Flask(__name__)
@@ -33,8 +33,12 @@ def proxydeletezip(username):
     d[0] =  ["Hello lol"]
     return d
 
+@socketio.on('my event')
+def handle_my_custom_event(data):
+    print(data)
+
 @socketio.on('message')
 def handle_message(message):
-    print('received message: ' + message)
+    socketio.emit('message', message)
 
 
