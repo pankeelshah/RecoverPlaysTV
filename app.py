@@ -33,12 +33,12 @@ def proxydeletezip(username):
     d[0] =  ["Hello lol"]
     return d
 
-@socketio.on('my event')
-def handle_my_custom_event(data):
-    print(data)
+# @socketio.on('my event')
+# def handle_my_custom_event(data):
+#     print(data)
 
-@socketio.on('message')
-def handle_message(message):
-    socketio.emit('message', message)
+# @socketio.on('message')
+# def handle_message(message):
+#     socketio.emit('message', message)
 
 

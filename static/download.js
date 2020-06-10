@@ -28,7 +28,6 @@ function deleteZip(username){
     jr.then( 
         function(data){
             // console.log("")
-            
         }
     )
 }
@@ -41,14 +40,12 @@ window.onload = function(){
     }
 };
 
-var socket = io();
-var status = 0;
-socket.on('connect', function() {
-    socket.emit('my event', {data: 'I\'m connected!'});
-    
+// var socket = io();
+// var status = 0;
+// socket.on('connect', function() {
+//     socket.emit('my event', {data: 'I\'m connected!'});
+// });
 
-});
-
-socket.on('message', function(msg) {
-    document.getElementById("stat").innerHTML = msg;
-});
+// socket.on('message', function(msg) {
+//     document.getElementById("stat").innerHTML = msg;
+// });
