@@ -14,7 +14,7 @@ function clicked(){
             window.open('/static/' + username + '_PlaysTVClips.zip');
             document.getElementById("searchButton").disabled = false;
             document.getElementById("showLoading").innerHTML = "";
-            deleteZip(username);
+            // deleteZip(username);
         }
     )
 }
