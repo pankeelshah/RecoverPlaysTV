@@ -1,6 +1,5 @@
 from flask import Flask, request, Response, render_template, redirect
 from flask_wtf.csrf import CSRFProtect
-from flask_wtf import FlaskForm
 import RecoverPlaysTVClips
 from flask_socketio import SocketIO, emit
 
@@ -10,7 +9,6 @@ app.config["SECRET_KEY"] = "row the boat"
 csrf.init_app(app)
 
 socketio = SocketIO(app)
-socketio.run(app)
 
 @app.route('/')
 def main():
@@ -42,4 +40,7 @@ def handle_my_custom_event(data):
 def handle_message(message):
     socketio.emit('message', message)
 
+
+if __name__ == "__main__":
+    app.run()
 
