@@ -67,7 +67,6 @@ service-identity==16.0.0
 simplegeneric==0.8.1
 six==1.15.0
 soupsieve==2.0.1
-ssh-import-id==5.7
 systemd-python==234
 traitlets==4.3.2
 Twisted==17.9.0
