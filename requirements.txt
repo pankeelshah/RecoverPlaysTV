@@ -3,7 +3,8 @@ bs4==0.0.1
 Flask==1.1.2
 Flask-SocketIO==4.3.0
 Flask-WTF==0.14.3
-gunicorn
+gunicorn==0.16.1
+python-socketio==4.6.0
 requests==2.22.0
 urllib3==1.25.7
 WTForms==2.3.1
