@@ -12,9 +12,9 @@ function clicked(){
     jr.then( 
         function(data){
             window.open('/static/' + username + '_PlaysTVClips.zip');
-            deleteZip(username);
             document.getElementById("searchButton").disabled = false;
             document.getElementById("showLoading").innerHTML = "";
+            deleteZip(username);
         }
     )
 }
