@@ -41,7 +41,7 @@ def create_zip(username):
     # different video names, download videos
     video_increment = 0
     for link in links:
-        # app.handle_message(str((video_increment/len(links)) * 100)  + "%")
+        app.handle_message(str((video_increment/len(links)) * 100)  + "%")
         try:
             urllib.request.urlretrieve(link[0], link[1] + ".mp4")
             video_increment += 1
@@ -50,7 +50,7 @@ def create_zip(username):
 
     # create zip file
     zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
-    # app.handle_message("Download Complete")
+    app.handle_message("Download Complete")
     # Add multiple files to the zip
     for i in range(0, video_increment):
         try:
@@ -73,3 +73,5 @@ def delete_zip(username):
     myfile = "static/" + username + "_PlaysTVClips.zip"
     if os.path.isfile(myfile):
         os.remove(myfile)
+
+
