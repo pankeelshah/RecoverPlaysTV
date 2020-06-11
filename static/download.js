@@ -8,6 +8,7 @@ function clicked(){
     document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
     username = document.querySelector("#username").value;
     socket.emit("createzip", {user: username, sid:id})
+    console.log(username + ":" + id);
 }
 
 // Press enter to search
@@ -22,6 +23,7 @@ window.onload = function(){
 // Get id when client connects
 socket.on('connect', function() {
     id = socket.io.engine.id;
+    
     socket.emit('my event', {data: 'I\'m connected!'});
 });
 
