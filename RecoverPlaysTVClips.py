@@ -5,6 +5,7 @@ import zipfile
 import glob
 import os
 import app
+import shutil
 
 def create_zip(username, sid):
 
@@ -15,7 +16,9 @@ def create_zip(username, sid):
     soup = bs4.BeautifulSoup(page.text, 'html.parser')
     clip_link_list = soup.findAll(class_='thumb-link')
     links = []
-
+    
+    path = "static/"+ sid + "/"
+    print(path)
     for elem in clip_link_list:
         # link of clip
         link = "https://web.archive.org" + elem.get("href")
@@ -37,13 +40,13 @@ def create_zip(username, sid):
 
     # remove duplicate links
     links = list(set(links))
-
+    os.mkdir("static/"+ sid)
     # different video names, download videos
     video_increment = 0
     for link in links:
         app.handle_message(str((video_increment/len(links)) * 100)  + "%", sid)
         try:
-            urllib.request.urlretrieve(link[0], link[1] + ".mp4")
+            urllib.request.urlretrieve(link[0], path + link[1] + ".mp4")
             video_increment += 1
         except:
             print("not a video link")
@@ -54,19 +57,21 @@ def create_zip(username, sid):
     # Add multiple files to the zip
     for i in range(0, video_increment):
         try:
-            zipObj.write(links[i][1] + ".mp4")
+            zipObj.write(path + links[i][1] + ".mp4")
         except:
             print("can't find video to add to zip")
 
     # close the Zip File
     zipObj.close()
 
-    # remove video files
-    for video in glob.glob("*.mp4"):
+
+    for video in glob.glob(path + "*"):
         try:
             os.remove(video)
         except:
             print("can't find video to delete")
+
+    os.removedirs(path)
 
 def delete_zip(username):
 

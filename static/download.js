@@ -1,24 +1,29 @@
 var id;
+var socket = io.connect('http://' + document.domain + ':' + location.port);
+var status = 0;
+var username;
+
 function clicked(){
     document.getElementById("searchButton").disabled = true;
     document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
 
-    var username = document.querySelector("#username").value;
+    username = document.querySelector("#username").value;
     console.log(id);
-    var url = '/proxy/download/' + username + '/' + id;
-    let promise = fetch(encodeURI(url));
+    socket.emit("createzip", {user: username, sid:id})
+    // var url = '/proxy/download/' + username + '/' + id;
+    // let promise = fetch(encodeURI(url));
 
-    let jr = promise.then(function(resp){
-        return resp.json();
-    })
-    jr.then( 
-        function(data){
-            window.open('/static/' + username + '_PlaysTVClips.zip');
-            document.getElementById("searchButton").disabled = false;
-            document.getElementById("showLoading").innerHTML = "";
-            // deleteZip(username);
-        }
-    )
+    // let jr = promise.then(function(resp){
+    //     return resp.json();
+    // })
+    // jr.then( 
+    //     function(data){
+    //         window.open('/static/' + username + '_PlaysTVClips.zip');
+    //         document.getElementById("searchButton").disabled = false;
+    //         document.getElementById("showLoading").innerHTML = "";
+    //         // deleteZip(username);
+    //     }
+    // )
 }
 
 
@@ -43,18 +48,28 @@ window.onload = function(){
     }
 };
 
-// var socket = io();
-var socket = io.connect('http://' + document.domain + ':' + location.port);
-var status = 0;
-
-
 socket.on('connect', function() {
     id = socket.io.engine.id;
     // console.log(id);
     socket.emit('my event', {data: 'I\'m connected!'});
 });
 
+
 socket.on('message', function(msg) {
-    document.getElementById("stat").innerHTML = msg;
+    // console.log(msg)
+    // if(msg == "created-zip"){
+    //     console.log(msg);
+        
+    // }else{
+        document.getElementById("stat").innerHTML = msg;
+    // }
+    
 });
+
+
+socket.on("created-zip", function(username){
+    window.open('/static/' + username + '_PlaysTVClips.zip');
+    document.getElementById("searchButton").disabled = false;
+    document.getElementById("showLoading").innerHTML = "";
+})
 

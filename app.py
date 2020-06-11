@@ -2,6 +2,7 @@ from flask import Flask, request, Response, render_template, redirect
 from flask_wtf.csrf import CSRFProtect
 import RecoverPlaysTVClips
 from flask_socketio import SocketIO, emit
+import json
 
 csrf = CSRFProtect()
 app = Flask(__name__)
@@ -47,6 +48,17 @@ def handle_message(message, sid):
 @socketio.on('disconnect')
 def handle_disconnect():
     clients.remove(request.sid)
+
+@socketio.on('createzip')
+def handle_zip(data):
+    # data = json.loads(data)
+    print("Printing data and id: " + data["user"] + " " + data["sid"])
+    # print(id)
+    # print(data[0] + " " + data[1])
+    RecoverPlaysTVClips.create_zip(data["user"], data["sid"])
+    socketio.emit('created-zip', data["user"], room=data["sid"])
+    RecoverPlaysTVClips.delete_zip(data["user"]);
+    
 
 
 if __name__ == "__main__":
