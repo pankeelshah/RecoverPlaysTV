@@ -10,6 +10,8 @@ csrf.init_app(app)
 
 socketio = SocketIO(app)
 
+clients = []
+
 @app.route('/')
 def main():
     return redirect("/index")
@@ -18,9 +20,10 @@ def main():
 def index():
     return render_template("index.html")
 
-@app.route('/proxy/download/<username>')
-def proxydownload(username):
-    RecoverPlaysTVClips.create_zip(username)
+@app.route('/proxy/download/<username>/<sid>')
+def proxydownload(username, sid):
+    print(sid)
+    RecoverPlaysTVClips.create_zip(username, sid)
     d = {}
     d[0] =  ["Hello lol"]
     return d
@@ -34,11 +37,16 @@ def proxydeletezip(username):
 
 @socketio.on('my event')
 def handle_my_custom_event(data):
-    print(data)
+    clients.append(request.sid)
+    print(clients)
 
 @socketio.on('message')
-def handle_message(message):
-    socketio.emit('message', message)
+def handle_message(message, sid):
+    socketio.emit('message', message, room=sid)
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    clients.remove(request.sid)
 
 
 if __name__ == "__main__":

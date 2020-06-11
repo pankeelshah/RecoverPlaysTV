@@ -1,9 +1,11 @@
+var id;
 function clicked(){
     document.getElementById("searchButton").disabled = true;
     document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
 
     var username = document.querySelector("#username").value;
-    var url = '/proxy/download/' + username;
+    console.log(id);
+    var url = '/proxy/download/' + username + '/' + id;
     let promise = fetch(encodeURI(url));
 
     let jr = promise.then(function(resp){
@@ -19,8 +21,9 @@ function clicked(){
     )
 }
 
+
 function deleteZip(username){
-    var url = '/proxy/deletezip/' + username;
+    var url = '/proxy/deletezip/' + username  + '/' + id;
     let promise = fetch(encodeURI(url));
     let jr = promise.then(function(resp){
         return resp.json();
@@ -43,10 +46,15 @@ window.onload = function(){
 // var socket = io();
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 var status = 0;
+
+
 socket.on('connect', function() {
+    id = socket.io.engine.id;
+    // console.log(id);
     socket.emit('my event', {data: 'I\'m connected!'});
 });
 
 socket.on('message', function(msg) {
     document.getElementById("stat").innerHTML = msg;
 });
+

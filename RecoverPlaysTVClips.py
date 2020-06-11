@@ -6,7 +6,7 @@ import glob
 import os
 import app
 
-def create_zip(username):
+def create_zip(username, sid):
 
     # plays.tv profile link
     user_profile_page_url = "https://web.archive.org/web/20191210043532/https://plays.tv/u/"
@@ -41,7 +41,7 @@ def create_zip(username):
     # different video names, download videos
     video_increment = 0
     for link in links:
-        app.handle_message(str((video_increment/len(links)) * 100)  + "%")
+        app.handle_message(str((video_increment/len(links)) * 100)  + "%", sid)
         try:
             urllib.request.urlretrieve(link[0], link[1] + ".mp4")
             video_increment += 1
@@ -50,7 +50,7 @@ def create_zip(username):
 
     # create zip file
     zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
-    app.handle_message("Download Complete")
+    app.handle_message("Download Complete", sid)
     # Add multiple files to the zip
     for i in range(0, video_increment):
         try:
