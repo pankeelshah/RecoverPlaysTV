@@ -40,7 +40,8 @@ def handle_zip(data):
     
 @socketio.on('deletezip')
 def handle_deletezip(data):
-    RecoverPlaysTVClips.delete_zip(data["user"])
+    # RecoverPlaysTVClips.delete_zip(data["user"])
+    pass
 
 if __name__ == "__main__":
     app.run()
