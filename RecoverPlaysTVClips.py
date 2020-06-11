@@ -8,6 +8,7 @@ import app
 import shutil
 
 def create_zip(username, sid):
+    app.handle_message(str(0)  + "%", sid)
 
     # plays.tv profile link
     user_profile_page_url = "https://web.archive.org/web/20191210043532/https://plays.tv/u/"
@@ -16,9 +17,8 @@ def create_zip(username, sid):
     soup = bs4.BeautifulSoup(page.text, 'html.parser')
     clip_link_list = soup.findAll(class_='thumb-link')
     links = []
-    
     path = "static/"+ sid + "/"
-    print(path)
+
     for elem in clip_link_list:
         # link of clip
         link = "https://web.archive.org" + elem.get("href")
@@ -40,11 +40,15 @@ def create_zip(username, sid):
 
     # remove duplicate links
     links = list(set(links))
+
+    # create directory for each client
     os.mkdir("static/"+ sid)
+
     # different video names, download videos
     video_increment = 0
+    length = len(links)
     for link in links:
-        app.handle_message(str((video_increment/len(links)) * 100)  + "%", sid)
+        app.handle_message(str(int((video_increment/length) * 100))  + "%", sid)
         try:
             urllib.request.urlretrieve(link[0], path + link[1] + ".mp4")
             video_increment += 1
@@ -54,6 +58,7 @@ def create_zip(username, sid):
     # create zip file
     zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
     app.handle_message("Download Complete", sid)
+
     # Add multiple files to the zip
     for i in range(0, video_increment):
         try:
@@ -64,13 +69,14 @@ def create_zip(username, sid):
     # close the Zip File
     zipObj.close()
 
-
+    # delete all mp4s in client dir
     for video in glob.glob(path + "*"):
         try:
             os.remove(video)
         except:
             print("can't find video to delete")
 
+    # removes client dir
     os.removedirs(path)
 
 def delete_zip(username):
