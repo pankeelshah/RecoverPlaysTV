@@ -30,7 +30,7 @@ Unfortunately, manually saving clips is very tedious especially for someone with
 demo video here
 
 ## Authors
-Pankeel Shah \n
+Pankeel Shah  
 Nikhil Tammana
 
 ## Bugs/Issues
