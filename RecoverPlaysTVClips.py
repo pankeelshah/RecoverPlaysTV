@@ -7,18 +7,18 @@ import os
 import app
 import shutil
 
-def create_zip(username, sid):
-    app.handle_message(str(0)  + "%", sid)
-
-    # plays.tv profile link
-    user_profile_page_url = "https://web.archive.org/web/20191210043532/https://plays.tv/u/"
-    user_profile_page_url += username
+# obtain links of all the clip pages
+def get_clip_page_links(username):
+    user_profile_page_url = "https://web.archive.org/web/20191210043532/https://plays.tv/u/" + username
     page = requests.get(user_profile_page_url)
     soup = bs4.BeautifulSoup(page.text, 'html.parser')
     clip_link_list = soup.findAll(class_='thumb-link')
-    links = []
-    path = "static/" + sid + "/"
+    return clip_link_list
 
+# use links of clip pages to get mp4 link for each clip
+def get_video_links(username):
+    clip_link_list = get_clip_page_links(username)
+    links = []
     for elem in clip_link_list:
         # link of clip
         link = "https://web.archive.org" + elem.get("href")
@@ -41,10 +41,22 @@ def create_zip(username, sid):
     # remove duplicate links
     links = list(set(links))
 
+    return links
+
+def create_zip(username, sid):
+    # initialize client loading to 0
+    app.handle_message(str(0)  + "%", sid)
+
+    # mp4 video links
+    links = get_video_links(username)
+
+    # path for each clients directory
+    path = "static/" + sid + "/"
+
     # create directory for each client
     os.mkdir(path)
 
-    # different video names, download videos
+    # download videos
     video_increment = 0
     length = len(links)
     for link in links:
@@ -56,8 +68,10 @@ def create_zip(username, sid):
             print("not a video link")
 
     # create zip file
-    app.handle_message("Download Complete", sid)
     shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid)
+
+    # update client that zip download is complete
+    app.handle_message("Download Complete", sid)
 
     # delete all mp4s in client dir
     for video in glob.glob(path + "*"):
@@ -66,7 +80,7 @@ def create_zip(username, sid):
         except:
             print("can't find video to delete")
 
-    # removes client dir
+    # removes empty client dir
     os.removedirs(path)
     
 def delete_zip(username):
