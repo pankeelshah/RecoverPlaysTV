@@ -56,18 +56,8 @@ def create_zip(username, sid):
             print("not a video link")
 
     # create zip file
-    zipObj = zipfile.ZipFile("static/" + username + "_PlaysTVClips.zip", "w")
     app.handle_message("Download Complete", sid)
-
-    # Add multiple files to the zip
-    for i in range(0, video_increment):
-        try:
-            zipObj.write(path + links[i][1] + ".mp4")
-        except:
-            print("can't find video to add to zip")
-
-    # close the Zip File
-    zipObj.close()
+    shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid);
 
     # delete all mp4s in client dir
     for video in glob.glob(path + "*"):
@@ -78,11 +68,8 @@ def create_zip(username, sid):
 
     # removes client dir
     os.removedirs(path)
-
+    
 def delete_zip(username):
-
     myfile = "static/" + username + "_PlaysTVClips.zip"
     if os.path.isfile(myfile):
         os.remove(myfile)
-
-
