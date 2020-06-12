@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 <head><base target="_blank"></head>
 
-=======
->>>>>>> d04c26cbec473bf09f0a463f2b06990b52f9a3e5
 # PlaysTVClipRecovery
 
 ## Introduction
