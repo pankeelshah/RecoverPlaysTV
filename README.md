@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # PlaysTVClipRecovery
 
 ## Introduction
@@ -27,17 +26,11 @@ Unfortunately, manually saving clips is very tedious especially for someone with
 ## Deployment
 [Hosted on Heroku](https://recover-playstv-clips.herokuapp.com/)
 
-## Installation
-pip3 install requirements.txt
-
-## Usage
-flask run
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Demo
+demo video here
 
 ## Authors
-Pankeel Shah
+Pankeel Shah \n
 Nikhil Tammana
 
 ## Bugs/Issues
