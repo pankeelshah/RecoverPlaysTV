@@ -1,10 +1,10 @@
+import app
 import requests
 import bs4
 import urllib
 import zipfile
 import glob
 import os
-import app
 import shutil
 
 # obtain links of all the clip pages

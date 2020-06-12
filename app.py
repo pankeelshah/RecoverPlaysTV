@@ -1,6 +1,6 @@
+import RecoverPlaysTVClips
 from flask import Flask, request, Response, render_template, redirect
 from flask_wtf.csrf import CSRFProtect
-import RecoverPlaysTVClips
 from flask_socketio import SocketIO, emit
 import json
 
