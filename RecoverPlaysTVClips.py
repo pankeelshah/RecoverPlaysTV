@@ -65,7 +65,7 @@ def create_zip(username, sid):
             urllib.request.urlretrieve(link[0], path + link[1] + ".mp4")
             video_increment += 1
         except:
-            print("not a video link")
+            pass
 
     # create zip file
     shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid)
@@ -78,7 +78,7 @@ def create_zip(username, sid):
         try:
             os.remove(video)
         except:
-            print("can't find video to delete")
+            pass
 
     # removes empty client dir
     os.removedirs(path)
