@@ -57,7 +57,7 @@ def create_zip(username, sid):
 
     # create zip file
     app.handle_message("Download Complete", sid)
-    shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid);
+    shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid)
 
     # delete all mp4s in client dir
     for video in glob.glob(path + "*"):
