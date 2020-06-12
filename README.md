@@ -26,7 +26,7 @@ If either the user page or the video page is not in the Wayback Machine, they mi
 Unfortunately, manually saving clips is very tedious especially for someone with many clips. The goal of this project is to try and automate that process.
 
 ## Deployment
-[Hosted on Heroku](https://recover-playstv-clips.herokuapp.com/){:target="_blank"}
+[Hosted on Heroku](https://recover-playstv-clips.herokuapp.com/ target="_blank)
 
 ## Demo
 demo video here
