@@ -17,7 +17,7 @@ def create_zip(username, sid):
     soup = bs4.BeautifulSoup(page.text, 'html.parser')
     clip_link_list = soup.findAll(class_='thumb-link')
     links = []
-    path = "static/"+ sid + "/"
+    path = "static/" + sid + "/"
 
     for elem in clip_link_list:
         # link of clip
@@ -42,7 +42,7 @@ def create_zip(username, sid):
     links = list(set(links))
 
     # create directory for each client
-    os.mkdir("static/"+ sid)
+    os.mkdir(path)
 
     # different video names, download videos
     video_increment = 0
