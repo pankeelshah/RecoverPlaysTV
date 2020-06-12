@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+<head><base target="_blank"></head>
+
 # PlaysTVClipRecovery
 
 ## Introduction
