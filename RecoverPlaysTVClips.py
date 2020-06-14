@@ -68,20 +68,30 @@ def create_zip(username, sid):
             pass
 
     # create zip file
-    shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid)
+    try:
+        shutil.make_archive(base_name="static/" + username + "_PlaysTVClips", format="zip", root_dir="static/", base_dir=sid)
+    except:
+        pass
 
     # update client that zip download is complete
     app.handle_message("Download Complete", sid)
 
+    # delete videos
+    delete_videos(sid)
+
+def delete_videos(sid):
+    path = "static/" + sid + "/"
     # delete all mp4s in client dir
     for video in glob.glob(path + "*"):
         try:
             os.remove(video)
         except:
             pass
-
     # removes empty client dir
-    os.removedirs(path)
+    try:
+        os.removedirs(path)
+    except:
+        pass
     
 def delete_zip(username):
     myfile = "static/" + username + "_PlaysTVClips.zip"

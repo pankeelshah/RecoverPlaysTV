@@ -23,6 +23,7 @@ def index():
 @socketio.on("my event")
 def handle_my_custom_event(data):
     clients.append(request.sid)
+    print(clients)
 
 @socketio.on("message")
 def handle_message(message, sid):
@@ -30,6 +31,7 @@ def handle_message(message, sid):
 
 @socketio.on("disconnect")
 def handle_disconnect():
+    RecoverPlaysTVClips.delete_videos(request.sid)
     clients.remove(request.sid)
 
 @socketio.on("createzip")
