@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/index.css">
+<script src="/static/download.js"></script>
+<title>RecoverPlaysTV.Video</title>
+{% endblock %}
+
+{% block content %}
+<div class="textInput">
+    <p class="title">This is how it works</p> 
+    <p>
+        On December 15th, 2019, Plays.TV discontinued their website and desktop application as seen in this <a target="blank" href="https://twitter.com/OfficialPlaysTV/status/1197270790707634176">post</a>.
+        If you did not download your videos by this time they were gone. 
+        Recently we came across this <a target="blank" href="https://www.reddit.com/r/Archiveteam/comments/ef5i9n/finding_lost_videos_on_playstv_archive/">here</a> which explains that archive.org succeeded in saving some (not all) of the videos. 
+        The thread also provides instructions for manually saving your videos.
+        Unfortunately, manually saving clips is very tedious especially for someone with many clips.
+        For this reason we automated this process as explained below.
+    </p>
+    <p>
+        We made use of the Python library Beautiful Soup to scrape the provided Plays TV profile page on archive.org.
+        After scraping the PlaysTV profile page, links to all of the clips are obtained. Next we go to each of the clips 
+        pages and check if the mp4 video exists. If it does, the clip has been saved by archive.org, we download it for you. 
+        We collect all of these videos, and zip them up for you.
+    </p>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

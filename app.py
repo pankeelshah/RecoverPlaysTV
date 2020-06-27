@@ -20,6 +20,10 @@ def main():
 def index():
     return render_template("index.html")
 
+@app.route("/guide")
+def guide():
+    return render_template("guide.html")
+
 @socketio.on("my event")
 def handle_my_custom_event(data):
     clients.append(request.sid)
