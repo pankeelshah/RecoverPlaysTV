@@ -1,18 +1,18 @@
 var id;
-var socket = io.connect('http://' + document.domain + ':' + location.port);
+var socket = io.connect("http://" + document.domain + ":" + location.port);
 var status = 0;
 var username;
 
 function clicked(){
     document.getElementById("downloadButton").disabled = true;
     document.getElementById("searchButton").disabled = true;
-    document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
+    document.getElementById("showLoading").innerHTML = "<div class="spinner-border"></div>";
     username = document.querySelector("#username").value;
     socket.emit("createzip", {user: username, sid:id})
 }
 
 function download(){
-    window.open('/static/' + username + '_PlaysTVClips.zip');
+    window.open("/static/" + username + "_PlaysTVClips.zip");
     // socket.emit("deletezip", {user: username, sid:id})
 }
 
@@ -26,12 +26,12 @@ window.onload = function(){
 };
 
 // Get id when client connects
-socket.on('connect', function() {
+socket.on("connect", function() {
     id = socket.io.engine.id;
-    socket.emit('my event', {data: 'I\'m connected!'});
+    socket.emit("my event", {data: "I\"m connected!"});
 });
 
-socket.on('message', function(msg) {
+socket.on("message", function(msg) {
     document.getElementById("stat").innerHTML = msg;   
 });
 
