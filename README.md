@@ -8,7 +8,7 @@ If you did not download your videos by this time they were gone. Recently we cam
 Unfortunately, manually saving clips is very tedious especially for someone with many clips. The goal of this project is to try and automate that process.
 
 ## Deployment
-[Hosted on Heroku](https://recover-playstv-clips.herokuapp.com/)
+[Hosted on Heroku](http://rptv.herokuapp.com/)
 
 ## Demo
 demo video here
@@ -34,3 +34,4 @@ Nikhil Tammana
 
 ## Bugs/Issues
 * delete happens before download
+* files or zip not always deleted
