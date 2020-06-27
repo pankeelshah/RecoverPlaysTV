@@ -6,7 +6,7 @@ var username;
 function clicked(){
     document.getElementById("downloadButton").disabled = true;
     document.getElementById("searchButton").disabled = true;
-    document.getElementById("showLoading").innerHTML = "<div class="spinner-border"></div>";
+    document.getElementById("showLoading").innerHTML = "<div class='spinner-border'></div>";
     username = document.querySelector("#username").value;
     socket.emit("createzip", {user: username, sid:id})
 }
