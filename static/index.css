@@ -1,8 +1,20 @@
 .textInput{
     margin: 100 auto;
-    width: 20%;
     text-align: center;
-    /* flex: auto; */
+    flex: auto;
 }
 
-/* p {text-align: center} */
+.title{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 20px;
+}
+
+.form-control{
+    width: 10%;
+    display: block;
+    margin : 0 auto;
+}

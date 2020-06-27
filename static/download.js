@@ -4,6 +4,7 @@ var status = 0;
 var username;
 
 function clicked(){
+    document.getElementById("downloadButton").disabled = true;
     document.getElementById("searchButton").disabled = true;
     document.getElementById("showLoading").innerHTML = '<div class="spinner-border"></div>';
     username = document.querySelector("#username").value;
@@ -12,7 +13,7 @@ function clicked(){
 
 function download(){
     window.open('/static/' + username + '_PlaysTVClips.zip');
-    socket.emit("deletezip", {user: username, sid:id})
+    // socket.emit("deletezip", {user: username, sid:id})
 }
 
 // Press enter to search
@@ -35,8 +36,7 @@ socket.on('message', function(msg) {
 });
 
 socket.on("created-zip", function(username){
-    // window.open('/static/' + username + '_PlaysTVClips.zip');
+    document.getElementById("downloadButton").disabled = false;
     document.getElementById("searchButton").disabled = false;
     document.getElementById("showLoading").innerHTML = "";
-   
 })
