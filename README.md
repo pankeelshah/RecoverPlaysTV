@@ -34,3 +34,4 @@ Nikhil Tammana
 
 ## Bugs/Issues
 * delete happens before download
+* files or zip not always deleted
