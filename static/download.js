@@ -10,6 +10,11 @@ function clicked(){
     socket.emit("createzip", {user: username, sid:id})
 }
 
+function download(){
+    window.open('/static/' + username + '_PlaysTVClips.zip');
+    socket.emit("deletezip", {user: username, sid:id})
+}
+
 // Press enter to search
 window.onload = function(){ 
     document.getElementById("username").onkeypress=function(e){
@@ -30,8 +35,8 @@ socket.on('message', function(msg) {
 });
 
 socket.on("created-zip", function(username){
-    window.open('/static/' + username + '_PlaysTVClips.zip');
+    // window.open('/static/' + username + '_PlaysTVClips.zip');
     document.getElementById("searchButton").disabled = false;
     document.getElementById("showLoading").innerHTML = "";
-    socket.emit("deletezip", {user: username, sid:id})
+   
 })
