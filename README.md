@@ -28,7 +28,3 @@ If either the user page or the video page is not in the Wayback Machine, they mi
 ## Authors
 Pankeel Shah  
 Nikhil Tammana
-
-## Bugs/Issues
-* delete happens before download
-* files or zip not always deleted
