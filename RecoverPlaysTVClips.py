@@ -74,7 +74,7 @@ def create_zip(username, sid):
         pass
 
     # update client that zip download is complete
-    app.handle_message("Download Complete", sid)
+    app.handle_message("Click Download to get your videos!", sid)
 
     # delete videos
     delete_videos(sid)
