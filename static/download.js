@@ -1,5 +1,5 @@
 var id;
-var socket = io.connect("http://" + document.domain + ":" + location.port);
+var socket = io.connect("//" + document.domain + ":" + location.port, {secure: true});
 var status = 0;
 var username;
 
@@ -19,7 +19,7 @@ function clicked(){
 
 function download(){
     window.open("/static/" + username + "_PlaysTVClips.zip");
-    // socket.emit("deletezip", {user: username, sid:id})
+    //socket.emit("deletezip", {user: username, sid:id})
 }
 
 // Press enter to search
