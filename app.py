@@ -1,5 +1,5 @@
 import RecoverPlaysTVClips
-from flask import Flask, request, Response, render_template, redirect, send_file
+from flask import Flask, request, Response, render_template, redirect, send_file, send_from_directory
 from flask_wtf.csrf import CSRFProtect
 from flask_socketio import SocketIO, emit
 import json
@@ -11,6 +11,10 @@ app.config["SECRET_KEY"] = "row the boat"
 csrf.init_app(app)
 socketio = SocketIO(app)
 clients = []
+
+@app.route("/.well-known/acme-challenge/C3Ia82uXKJRKEfnJdJEdRPJYGhFlFs3MEqLSls0u6VE")
+def challenge():
+    return "C3Ia82uXKJRKEfnJdJEdRPJYGhFlFs3MEqLSls0u6VE.9PYAF2AjwIy-nhX0k41J9Sya-Kredp4EFK7LWb0j9t0"
 
 @app.route("/")
 def main():
