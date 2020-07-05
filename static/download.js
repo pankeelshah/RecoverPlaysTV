@@ -1,6 +1,5 @@
 var id;
 var socket = io.connect("//" + document.domain + ":" + location.port, {secure: true});
-var status = 0;
 var username;
 
 function clicked(){
