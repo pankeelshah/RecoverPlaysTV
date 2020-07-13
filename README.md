@@ -8,7 +8,7 @@ If you did not download your videos by this time they were gone. Recently we cam
 Unfortunately, manually saving clips is very tedious especially for someone with many clips. The goal of this project is to try and automate that process.
 
 ## Deployment
-http://www.recoverplaystv.com/
+https://www.recoverplaystv.com/
 
 ## Manually Save Clips
 1. Open your user profile page in the Wayback Machine, e.g. https://web.archive.org/web/20191210043532/https://plays.tv/u/g0dspirit.
