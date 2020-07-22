@@ -1,0 +1,22 @@
+.textInput{
+    margin: 100 auto;
+    text-align: center;
+    flex: auto;
+}
+
+.title{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 20px;
+    padding-right: 24%;
+    padding-left: 24%;
+}
+
+.form-control{
+    width: 10%;
+    display: block;
+    margin : 0 auto;
+}
