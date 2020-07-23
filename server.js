@@ -7,11 +7,13 @@ var server = http.Server(app);
 var io = require('socket.io')(server);
 var JSZip = require("jszip");
 var FileSaver = require('file-saver');
+// var fs = require('fs');
+var path = require('path');
 
 app.use(express.static('client'));
 
 server.listen(PORT, function() {
-  console.log('Server running');
+  console.log('Server running at localhost:' + PORT);
 });
 
 io.on('connection', function(socket) {
@@ -206,9 +208,25 @@ async function createZip(username, allFileLinks){
   for(var i = 0; i < allFileLinks.length; i++){
     name = Object.values(allFileLinks)[i].name;
     fileLocation = username + "/" + name + ".mp4";
-    zip.file(fileLocation, name + ".mp4");
+    zip.file(name + ".mp4", fs.readFileSync(fileLocation));
   }
   const content = await zip.generateAsync({type:"nodebuffer"})
   fs.writeFileSync("client/" + username + ".zip", content)
   console.log("Zip created");
 }
+
+// async function createZip(username, allFileLinks){
+//   console.log("Creating zip");
+  
+//   var zip = new require('node-zip')();
+
+//   for(var i = 0; i < allFileLinks.length; i++){
+//     name = Object.values(allFileLinks)[i].name;
+//     fileLocation = username + "/" + name + ".mp4";
+//     zip.file(name + ".mp4", fs.readFileSync(fileLocation));
+//   }
+//   var data = zip.generate({ base64:false, compression: 'DEFLATE' });
+//   fs.writeFileSync('test.zip', data, 'binary');
+
+//   console.log("Zip created");
+// }
