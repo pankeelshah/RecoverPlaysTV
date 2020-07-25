@@ -95,7 +95,7 @@ async function getVideoLinksFromProfile(profileURL) {
       (res) =>
         res.status() === 200 && res.url().includes("https://plays.tv/ws/module")
     );
-    await delay(2000); // Timer is needed between requests because of rate limiting
+    await delay(5000); // Timer is needed between requests because of rate limiting
 
     let curr = (
       await page.$$(".video-list-container>.video-list>li.video-item")
