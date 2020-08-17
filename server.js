@@ -169,7 +169,7 @@ async function run(username, socket) {
       allLinks.map(async function (link) {
         return {
           name: getVideoNameFromURL(link),
-          url: await getVideoFileURLCheerio(link),
+          url: await getVideoFileURLCheerio("https://web.archive.org/web/20191212212244if_/" + link),
           username: username,
           socket: socket,
         };
